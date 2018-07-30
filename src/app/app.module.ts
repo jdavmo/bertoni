@@ -22,6 +22,7 @@ import {
 
 import { AppComponent } from './app.component';
 import { BERTONI_ROUTES, BERTONI_COMPONENTS } from './app.routes';
+import { BertoniConfigService, CategoryService, PetService, UtilitiesService  } from './services';
 
 const MATERIAL_MODULES: any[] = [
     MatButtonModule, MatCardModule, MatIconModule,
@@ -56,7 +57,7 @@ const ANGULAR_MODULES: any[] = [
         COVALENT_MODULES,
         RouterModule.forRoot(BERTONI_ROUTES, { useHash: true })
     ],
-    providers: [],
+    providers: [BertoniConfigService, CategoryService, PetService, UtilitiesService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
