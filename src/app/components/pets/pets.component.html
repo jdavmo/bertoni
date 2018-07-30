@@ -4,23 +4,17 @@
         </td-search-box>
         <mat-divider></mat-divider>
         <mat-list class="will-load">
-            <div class="mat-padding" *ngIf="!entitiesData || entitiesData.length === 0" layout="row" layout-align="center center">
+            <div class="mat-padding" *ngIf="!entities || entities.length === 0" layout="row" layout-align="center center">
                 <h3>No Pets found!</h3>
             </div>
-            <ng-template let-item let-last="last" ngFor [ngForOf]="entitiesData">
+            <ng-template let-item let-last="last" ngFor [ngForOf]="entities">
                 <mat-list-item>
-                    <mat-icon mat-list-icon [ngClass]="getColor(item.name)"> style </mat-icon>
+                    <mat-icon mat-list-icon [ngClass]="getColor(item.name)"> pets </mat-icon>
                     <h3 mat-line> {{item.name}} </h3>
-                    <h4 mat-line class="tc-grey-700"> {{item.comments}} </h4>
                     <span flex></span>
-                    <span flex-gt-xs="60" flex-xs="40" layout-gt-xs="row" *ngIf="!selector">
-                        <div class="mat-caption tc-grey-500" flex-gt-xs="50"> {{ item.userName }} </div>
-                        <div class="mat-caption tc-grey-500" flex-gt-xs="50"> {{ item.updated_at | date:'fullDate' }} </div>
-                        <!--timeAgo-->
-                    </span>
                     <span flex-gt-xs="5" flex-xs="5" layout-gt-xs="row"></span>
                     <span>
-                        <button matTooltip="Edit" mat-icon-button [routerLink]="[item.uuid + '/edit']">
+                        <button matTooltip="Edit" mat-icon-button [routerLink]="[item.id + '/edit']">
                             <mat-icon>edit</mat-icon>
                         </button>
                     </span>
@@ -29,21 +23,8 @@
                 <mat-divider *ngIf="!last"></mat-divider>
             </ng-template>
         </mat-list>
-        <mat-card-actions *ngIf="entities">
-            <div layout="row" class="mat-padding">
-                <div flex layout="row" layout-align="left center">
-                    Showing
-                    <span *ngIf="entities.to">&nbsp;{{entities.to}}&nbsp;</span>
-                    <span *ngIf="!entities.to">&nbsp;0&nbsp;</span> Of {{entities.total}}
-                </div>
-                <div flex></div>
-            </div>
-        </mat-card-actions>
     </ng-template>
 </mat-card>
-<div flex layout="row" class="load-more-btn" layout-align="center center" *ngIf="entities">
-    <button mat-raised-button color="accent" (click)="loadMore($event)" *ngIf="entities.to < entities.total">Load More</button>
-</div>
-<a mat-fab matTooltip="Add" color="accent" class="mat-fab-bottom-right fixed push-bottom-md" [routerLink]="['add']" *ngIf="!selector">
+<a mat-fab matTooltip="Add" color="accent" class="mat-fab-bottom-right fixed push-bottom-md" [routerLink]="['add']">
     <mat-icon>add</mat-icon>
 </a>
