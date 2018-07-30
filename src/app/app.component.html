@@ -1,16 +1,26 @@
 <td-layout>
-    <td-layout-nav-list logo="assets:teradata" toolbarTitle="Bertoni Solutions" sidenavWidth="250px" opened="true" mode="side">
+    <td-layout-nav-list
+        toolbarTitle="Bertoni Solutions" 
+        sidenavWidth="250px" 
+        opened="true" 
+        mode="side">
         <div td-sidenav-content>
             <!--===Menu===-->
             <mat-nav-list dense>
-                <a mat-list-item>
+                <a mat-list-item
+                    [routerLinkActive]="['active']"
+                    [routerLinkActiveOptions]="{exact:true}" 
+                    [routerLink]="['/categories']">
                     <mat-icon mat-list-icon>style</mat-icon>
                     <h3 matLine>
                         <span class="text-wrap">Categories</span>
                     </h3>
                 </a>
                 <mat-divider *ngIf="!last"></mat-divider>
-                <a mat-list-item>
+                <a mat-list-item
+                    [routerLinkActive]="['active']"
+                    [routerLinkActiveOptions]="{exact:true}" 
+                    [routerLink]="['/pets']">
                     <mat-icon mat-list-icon>pets</mat-icon>
                     <h3 matLine>
                         <span class="text-wrap">Pets</span>

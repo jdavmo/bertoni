@@ -11,7 +11,15 @@ import { CategoriesComponent,
 export const BERTONI_ROUTES: Routes = [
     {
         path: '', 
-        component: PetsComponent, 
+        component: PetsComponent,
+    },
+    {
+        path: 'categories', 
+        component: CategoriesComponent,
+    },
+    {
+        path: 'pets', 
+        component: PetsComponent,
     }
 ];
 
