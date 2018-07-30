@@ -1,0 +1,30 @@
+<mat-card>
+    <ng-template tdLoading="categories">
+        <td-search-box class="push-left push-right" placeholder="Search" [alwaysVisible]="true" (searchDebounce)="search($event)">
+        </td-search-box>
+        <mat-divider></mat-divider>
+        <mat-list class="will-load">
+            <div class="mat-padding" *ngIf="!entities || entities.length === 0" layout="row" layout-align="center center">
+                <h3>No categories found!</h3>
+            </div>
+            <ng-template let-item let-last="last" ngFor [ngForOf]="entities">
+                <mat-list-item>
+                    <mat-icon mat-list-icon [ngClass]="getColor(item.name)"> style </mat-icon>
+                    <h3 mat-line> {{item.name}} </h3>
+                    <span flex></span>
+                    <span flex-gt-xs="5" flex-xs="5" layout-gt-xs="row"></span>
+                    <span>
+                        <button matTooltip="Edit" mat-icon-button [routerLink]="[item.id + '/edit']">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </span>
+                    <span flex-gt-xs="5" flex-xs="5" layout-gt-xs="row"></span>
+                </mat-list-item>
+                <mat-divider *ngIf="!last"></mat-divider>
+            </ng-template>
+        </mat-list>
+    </ng-template>
+</mat-card>
+<a mat-fab matTooltip="Add" color="accent" class="mat-fab-bottom-right fixed push-bottom-md" [routerLink]="['add']">
+    <mat-icon>add</mat-icon>
+</a>
